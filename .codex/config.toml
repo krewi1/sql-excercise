@@ -1,0 +1,25 @@
+# Codex CLI settings for this exercise. Codex loads this file once the
+# project is trusted (it asks on first open). The agent may read the schema
+# and edit the SQL files; it may not read the data or leave the sandbox.
+
+approval_policy = "never"
+web_search = "disabled"
+default_permissions = "exercise"
+
+[permissions.exercise]
+description = "Write SQL from dictation; never look at the data."
+extends = ":workspace"
+
+[permissions.exercise.filesystem.":workspace_roots"]
+"." = "read"
+"queries" = "write"
+"data" = "deny"
+"answer_key.md" = "deny"
+"answer_key.py" = "deny"
+"generate_dataset.py" = "deny"
+"INTERVIEWER.md" = "deny"
+"sql_shell.py" = "deny"
+".venv" = "deny"
+
+[permissions.exercise.network]
+enabled = false
