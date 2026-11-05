@@ -35,4 +35,7 @@ The dialect is DuckDB, which is PostgreSQL-flavoured and accepts most BigQuery f
 
 ## Tasks
 
-The task text is at the top of each file under `queries/`. Start with `explore.sql`.
+Start with `queries/explore.sql` to look around. Then:
+
+- [Task 1: recent order activity per customer](task1.md), written in `queries/task1.sql`
+- [Task 2: late deliveries per customer](task2.md), written in `queries/task2.sql`
