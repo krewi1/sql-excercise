@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(./queries/**)",
+      "Read(./*.md)",
+      "Edit(./queries/**)",
+      "Write(./queries/**)",
+      "Glob"
+    ],
+    "deny": [
+      "Bash",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Read(./data/**)",
+      "Edit(./data/**)",
+      "Write(./data/**)",
+      "Read(./answer_key.md)",
+      "Read(./answer_key.py)",
+      "Read(./generate_dataset.py)",
+      "Read(./INTERVIEWER.md)",
+      "Read(./sql_shell.py)"
+    ]
+  }
+}
