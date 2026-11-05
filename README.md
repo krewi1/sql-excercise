@@ -22,9 +22,9 @@ Harlequin: schema tree on the left, editor in the middle, results below.
 Prefer your own editor? Write SQL in a file and run it from the terminal:
 
 ```bash
-uv run sql queries/task1.sql           # runs every statement, prints each result
-uv run sql --watch queries/task1.sql   # same, re-runs on every save
-uv run sql                             # plain interactive shell
+uv run sql task1            # runs every statement in queries/task1.sql, prints each result
+uv run sql --watch task1    # same, re-runs on every save
+uv run sql                  # plain interactive shell
 ```
 
 ## Data

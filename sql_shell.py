@@ -1,9 +1,11 @@
 """Run SQL against the interview dataset, backed by DuckDB.
 
-    uv run sql queries/task1.sql           # run every statement in the file, print each result
-    uv run sql --watch queries/task1.sql   # same, re-run on every save
-    uv run sql a.sql b.sql                 # several files, in order, same connection
-    uv run sql                             # interactive shell, statements end with ';'
+    uv run sql task1            # run every statement in queries/task1.sql, print each result
+    uv run sql --watch task1    # same, re-run on every save
+    uv run sql task1 checks     # several files, in order, same connection
+    uv run sql                  # interactive shell, statements end with ';'
+
+A bare name is looked up in queries/, with or without .sql; a path is used as given.
 
 Shell commands:  \\tables   \\d <table>   \\quit
 """
@@ -17,6 +19,7 @@ from pathlib import Path
 import duckdb
 
 DATA_DIRECTORY = Path(__file__).parent / "data"
+QUERIES_DIRECTORY = Path(__file__).parent / "queries"
 TABLES = ["customers", "promotions", "orders", "order_items"]
 
 
@@ -209,18 +212,32 @@ def watch_files(paths: list[Path]) -> None:
         print()
 
 
+def resolve_query_path(name: str) -> Path:
+    """`task1`, `task1.sql` and `queries/task1.sql` all mean the same file; an existing path wins."""
+    candidates = [Path(name), QUERIES_DIRECTORY / name, QUERIES_DIRECTORY / f"{name}.sql"]
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate.relative_to(Path.cwd()) if candidate.is_relative_to(Path.cwd()) else candidate
+    available = ", ".join(sorted(path.stem for path in QUERIES_DIRECTORY.glob("*.sql")))
+    raise FileNotFoundError(f"no SQL file named {name!r}; in queries/: {available}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("files", nargs="*", type=Path, help="SQL files to run; none opens the interactive shell")
+    parser.add_argument("files", nargs="*", help="SQL files to run, by name in queries/ or by path; none opens the interactive shell")
     parser.add_argument("--watch", action="store_true", help="re-run the files every time one of them is saved")
     arguments = parser.parse_args()
 
     if arguments.watch and not arguments.files:
         parser.error("--watch needs at least one file")
+    try:
+        paths = [resolve_query_path(name) for name in arguments.files]
+    except FileNotFoundError as error:
+        parser.error(str(error))
     if arguments.watch:
-        watch_files(arguments.files)
-    elif arguments.files:
-        run_files(arguments.files)
+        watch_files(paths)
+    elif paths:
+        run_files(paths)
     else:
         repl(connect())
     sys.exit(0)
