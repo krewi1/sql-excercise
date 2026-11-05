@@ -1,0 +1,38 @@
+# SQL exercise
+
+A small orders dataset in DuckDB and a terminal SQL IDE to query it. Nothing to install beyond [uv](https://docs.astral.sh/uv/).
+
+## Setup
+
+```bash
+uv sync          # once, creates .venv with DuckDB and Harlequin
+uv run harlequin # opens the database in Harlequin
+```
+
+Harlequin: schema tree on the left, editor in the middle, results below.
+
+| Key | Action |
+|---|---|
+| Ctrl+Enter | run the query, or the selected text |
+| Ctrl+O | open a file, for example `queries/task1.sql` |
+| Ctrl+S | save the file |
+| F1 | all key bindings |
+| Ctrl+Q | quit |
+
+Prefer your own editor? Write SQL in a file and run it from the terminal:
+
+```bash
+uv run sql queries/task1.sql           # runs every statement, prints each result
+uv run sql --watch queries/task1.sql   # same, re-runs on every save
+uv run sql                             # plain interactive shell
+```
+
+## Data
+
+Four tables, described in [`queries/schema.md`](queries/schema.md): `customers`, `orders`, `order_items`, `promotions`. Timestamps are UTC. For the tasks, today is **2026-11-01**.
+
+The dialect is DuckDB, which is PostgreSQL-flavoured and accepts most BigQuery functions (`DATE_DIFF`, `COUNTIF`, `DATE_SUB`). If a function you know is missing, say so and we will find the equivalent.
+
+## Tasks
+
+The task text is at the top of each file under `queries/`. Start with `explore.sql`.

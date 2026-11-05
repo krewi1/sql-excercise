@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.idea/
+*.egg-info/
+*.duckdb.wal
+
+# interviewer-only: answers and the generator that documents the traps
+answer_key.py
+answer_key.md
+generate_dataset.py
+INTERVIEWER.md

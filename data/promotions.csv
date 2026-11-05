@@ -1,0 +1,6 @@
+promo_id,promo_code,is_active
+1,WELCOME10,true
+2,SPRING25,false
+3,BULK15,true
+4,SUMMER20,false
+5,TEAMS5,true
