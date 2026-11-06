@@ -4,8 +4,26 @@ A small orders dataset in DuckDB and a terminal SQL IDE to query it. Nothing to 
 
 ## Setup
 
+One short script per platform installs uv if needed, then DuckDB and Harlequin. Run it from the repository root:
+
 ```bash
-uv sync          # once, creates .venv with DuckDB and Harlequin
+bash scripts/mac.sh
+bash scripts/linux.sh
+powershell -ExecutionPolicy Bypass -File scripts\win.ps1
+```
+
+No uv possible on your machine? Any Python 3.9 or newer works too:
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install duckdb harlequin
+.venv/bin/harlequin                      # instead of uv run harlequin
+.venv/bin/python sql_shell.py task1      # instead of uv run sql task1
+.venv/bin/python reveal.py task1         # instead of uv run reveal task1
+```
+
+Then:
+
+```bash
 uv run harlequin # opens the database in Harlequin
 ```
 
