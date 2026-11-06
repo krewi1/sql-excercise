@@ -44,3 +44,12 @@ Start with `queries/explore.sql` to look around. Then:
 - [Task 1: recent order activity per customer](task1.md), written in `queries/task1.sql`
 - [Task 2: late deliveries per customer](task2.md), written in `queries/task2.sql`
 - [Task 3: late deliveries, as of a past date](task3.md), written in `queries/task3.sql`
+
+When the interviewer says so, fetch the reference solution and put it next to yours:
+
+```bash
+git fetch origin task1
+git checkout origin/task1 -- queries/task1_reference.sql
+```
+
+Your own file is untouched. Open both in Harlequin and compare.

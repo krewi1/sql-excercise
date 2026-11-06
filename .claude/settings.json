@@ -9,6 +9,7 @@
     ],
     "deny": [
       "Bash",
+      "Bash(git:*)",
       "Grep",
       "WebFetch",
       "WebSearch",
