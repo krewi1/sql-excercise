@@ -10,3 +10,6 @@ answer_key.md
 generate_dataset.py
 INTERVIEWER.md
 solutions/
+
+# written by uv run reveal during the interview
+queries/*_reference.sql

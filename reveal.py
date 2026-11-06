@@ -28,7 +28,10 @@ def main() -> None:
     fetch = subprocess.run(["git", "fetch", "--quiet", arguments.remote, task], cwd=ROOT, capture_output=True, text=True)
     if fetch.returncode != 0:
         sys.exit(f"the reference for {task} is not published yet; ask the interviewer")
-    subprocess.run(["git", "checkout", "--quiet", "FETCH_HEAD", "--", reference_file], cwd=ROOT, check=True)
+    # `git show` to a file, not `git checkout`: a checkout would stage the file and it
+    # would ride along with the candidate's next commit.
+    show = subprocess.run(["git", "show", f"FETCH_HEAD:{reference_file}"], cwd=ROOT, check=True, capture_output=True, text=True)
+    (ROOT / reference_file).write_text(show.stdout)
     print(f"reference written to {reference_file}; open it next to queries/{task}.sql")
 
 
