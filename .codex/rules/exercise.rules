@@ -6,3 +6,9 @@ prefix_rule(
     decision = "forbidden",
     justification = "git is off limits for the assistant here; the person runs git themselves",
 )
+
+prefix_rule(
+    pattern = ["uv", "run", "reveal"],
+    decision = "forbidden",
+    justification = "only the person fetches the reference solution",
+)

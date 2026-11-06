@@ -45,11 +45,10 @@ Start with `queries/explore.sql` to look around. Then:
 - [Task 2: late deliveries per customer](task2.md), written in `queries/task2.sql`
 - [Task 3: late deliveries, as of a past date](task3.md), written in `queries/task3.sql`
 
-When the interviewer says so, fetch the reference solution and put it next to yours:
+When the interviewer says so, fetch the reference solution next to yours:
 
 ```bash
-git fetch origin task1
-git checkout origin/task1 -- queries/task1_reference.sql
+uv run reveal task1
 ```
 
-Your own file is untouched. Open both in Harlequin and compare.
+It writes `queries/task1_reference.sql` and leaves your own file untouched. Open both in Harlequin and compare.
