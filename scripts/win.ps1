@@ -11,4 +11,4 @@ if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
 
 uv sync
 uv run sql explore | Out-Null
-Write-Host "ready: uv run harlequin"
+Write-Host "ready: uv run ide"

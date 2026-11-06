@@ -16,4 +16,4 @@ fi
 
 uv sync
 uv run sql explore > /dev/null
-echo "ready: uv run harlequin"
+echo "ready: uv run ide"

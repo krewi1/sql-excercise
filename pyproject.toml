@@ -11,6 +11,7 @@ dependencies = [
 [project.scripts]
 generate-dataset = "generate_dataset:main"
 answer-key = "answer_key:main"
+ide = "harlequin.cli:harlequin"
 sql = "sql_shell:main"
 ui = "sql_shell:ui"
 reveal = "reveal:main"

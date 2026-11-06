@@ -16,7 +16,7 @@ No uv possible on your machine? Any Python 3.9 or newer works too:
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install duckdb harlequin
-.venv/bin/harlequin                      # instead of uv run harlequin
+.venv/bin/harlequin                      # instead of uv run ide
 .venv/bin/python sql_shell.py task1      # instead of uv run sql task1
 .venv/bin/python reveal.py task1         # instead of uv run reveal task1
 ```
@@ -24,7 +24,7 @@ python3 -m venv .venv && .venv/bin/pip install duckdb harlequin
 Then:
 
 ```bash
-uv run harlequin # opens the database in Harlequin
+uv run ide # opens the database in Harlequin
 ```
 
 Harlequin: schema tree on the left, editor in the middle, results below.
